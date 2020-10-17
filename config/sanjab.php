@@ -18,6 +18,7 @@ return [
         SanjabTicket\Controllers\TicketController::class,
         SanjabTicket\Controllers\TicketSettingController::class,
         App\Http\Controllers\Admin\Crud\UserController::class,
+        App\Http\Controllers\Admin\Crud\BuisnessController::class,
     ],
 
     /*

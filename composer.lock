@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2da1412bfda0410f2875989295805c3f",
+    "content-hash": "474fd97d481ccccc996ba7ccf586138d",
     "packages": [
         {
             "name": "ankitpokhrel/tus-php",
@@ -1650,30 +1650,29 @@
         },
         {
             "name": "laravel/ui",
-            "version": "v2.3.0",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "2ccaa3b821ea8ac7e05393b946d0578bdb46099b"
+                "reference": "ff6af4f0bc5a5bfe73352cdc03dbfffc4ace92d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/2ccaa3b821ea8ac7e05393b946d0578bdb46099b",
-                "reference": "2ccaa3b821ea8ac7e05393b946d0578bdb46099b",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/ff6af4f0bc5a5bfe73352cdc03dbfffc4ace92d8",
+                "reference": "ff6af4f0bc5a5bfe73352cdc03dbfffc4ace92d8",
                 "shasum": ""
             },
             "require": {
-                "illuminate/console": "^7.0|^8.0",
-                "illuminate/filesystem": "^7.0|^8.0",
-                "illuminate/support": "^7.0|^8.0",
-                "php": "^7.2.5"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^8.0|^9.0"
+                "illuminate/console": "^8.0",
+                "illuminate/filesystem": "^8.0",
+                "illuminate/support": "^8.0",
+                "php": "^7.3"
             },
             "type": "library",
             "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                },
                 "laravel": {
                     "providers": [
                         "Laravel\\Ui\\UiServiceProvider"
@@ -1701,7 +1700,7 @@
                 "laravel",
                 "ui"
             ],
-            "time": "2020-09-09T12:07:59+00:00"
+            "time": "2020-09-11T15:34:08+00:00"
         },
         {
             "name": "league/commonmark",
@@ -3237,17 +3236,11 @@
         },
         {
             "name": "sanjabteam/sanjab",
-            "version": "v0.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sanjabteam/sanjab.git",
-                "reference": "989fe70c69d666d534129f3202da55b1f9f94bd0"
-            },
+            "version": "dev-master",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sanjabteam/sanjab/zipball/989fe70c69d666d534129f3202da55b1f9f94bd0",
-                "reference": "989fe70c69d666d534129f3202da55b1f9f94bd0",
-                "shasum": ""
+                "type": "path",
+                "url": "./sanjab",
+                "reference": "149ea15208d125ed35a9f6e53b33dd62c15e9edc"
             },
             "require": {
                 "ankitpokhrel/tus-php": "^1.2|^2",
@@ -3255,11 +3248,11 @@
                 "barryvdh/elfinder-flysystem-driver": "^0.2",
                 "codex-team/editor.js": "^2.0",
                 "google/recaptcha": "^1.2",
-                "illuminate/support": "^6|^7|^8",
+                "illuminate/support": "^7|^8",
                 "intervention/image": "^2.5",
                 "jenssegers/agent": "^2.6",
                 "laravel/helpers": "^1",
-                "laravel/ui": "^2.0",
+                "laravel/ui": "^2.0|^3.0",
                 "league/flysystem": "^1.0",
                 "league/flysystem-ziparchive": "^1.0",
                 "nesbot/carbon": "^2.35",
@@ -3292,7 +3285,29 @@
                     "./src/Helpers/helpers.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Sanjab\\Tests\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "\"vendor/bin/phpunit\""
+                ],
+                "test-coverage": [
+                    "\"vendor/bin/phpunit\" --coverage-html coverage"
+                ],
+                "publish": [
+                    "npm version patch",
+                    "npm publish",
+                    "git push origin master --tags"
+                ],
+                "publish-minor": [
+                    "npm version minor",
+                    "npm publish",
+                    "git push origin master --tags"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -3308,7 +3323,9 @@
                 "laravel",
                 "sanjab"
             ],
-            "time": "2020-10-03T10:01:39+00:00"
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "sanjabteam/ticket",
@@ -9604,6 +9621,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "sanjabteam/sanjab": 20,
         "sanjabteam/ticket": 20
     },
     "prefer-stable": true,

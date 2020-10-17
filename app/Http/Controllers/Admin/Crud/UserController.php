@@ -29,10 +29,10 @@ class UserController extends CrudController
     {
         $this->widgets[] = IdWidget::create();
 
-        $this->widgets[] = TextWidget::create('first_name', 'نام')
+        $this->widgets[] = TextWidget::create('first_name', __('First Name'))
                 ->rules('required|string');
 
-        $this->widgets[] = TextWidget::create('last_name', 'نام خانوادگی')
+        $this->widgets[] = TextWidget::create('last_name', __('Last Name'))
                 ->rules('required|string');
 
         $this->widgets[] = TextWidget::create('email', trans('sanjab::sanjab.email'))

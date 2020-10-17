@@ -14,8 +14,9 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
+        "laravel/ui": "^3.0",
         "livewire/livewire": "^2.0",
-        "sanjabteam/sanjab": "^0.3.0",
+        "sanjabteam/sanjab": "dev-master",
         "sanjabteam/ticket": "dev-master"
     },
     "require-dev": {
@@ -67,6 +68,10 @@
         ]
     },
     "repositories": [
+        {
+            "type": "path",
+            "url": "./sanjab"
+        },
         {
             "type": "path",
             "url": "./ticket"

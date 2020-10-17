@@ -47,7 +47,7 @@ class User extends Authenticatable
      */
     public function buisness()
     {
-        return $this->hasOne(Buisness::class)->wihoutGlobalScope('approved');
+        return $this->hasOne(Buisness::class)->withoutGlobalScope('approved');
     }
 
     public function getNameAttribute()
