@@ -1,6 +1,6 @@
 require('sanjab');
 
-// Your plugins and components here
+Vue.use(require('sanjab-ticket').default);
 
 if (document.querySelector('#sanjab_app')) {
     window.sanjabApp = new Vue({

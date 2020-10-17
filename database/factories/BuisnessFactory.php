@@ -22,7 +22,9 @@ class BuisnessFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'approved'    => true,
+            'name'        => $this->faker->name,
+            'description' => $this->faker->text,
         ];
     }
 }

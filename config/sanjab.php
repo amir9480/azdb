@@ -15,6 +15,8 @@ return [
     */
     'controllers' => [
         App\Http\Controllers\Admin\DashboardController::class,
+        SanjabTicket\Controllers\TicketController::class,
+        SanjabTicket\Controllers\TicketSettingController::class,
         App\Http\Controllers\Admin\Crud\UserController::class,
     ],
 
@@ -165,6 +167,8 @@ return [
         | Plugin's service providers that should be booted before sanjab service provider.
         |--------------------------------------------------------------------------
         */
-        'providers' => [],
+        'providers' => [
+            \SanjabTicket\SanjabTicketServiceProvider::class
+        ],
     ],
 ];

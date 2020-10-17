@@ -26,8 +26,7 @@ class AddBuisnessIdToTicketsTable extends Migration
     public function down()
     {
         Schema::table('tickets', function (Blueprint $table) {
-            $table->dropForeign(['buisness_id']);
-            $table->dropColumn('buisness_id');
+            $table->dropConstrainedForeignId('buisness_id');
         });
     }
 }
