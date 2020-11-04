@@ -23,7 +23,7 @@ class BuisnessFactory extends Factory
     {
         return [
             'approved'    => true,
-            'name'        => $this->faker->name,
+            'name'        => $this->faker->word,
             'description' => $this->faker->text,
         ];
     }

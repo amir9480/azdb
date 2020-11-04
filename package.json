@@ -10,6 +10,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.1",
         "axios": "^0.19",
         "bootstrap": "^4.0.0",
         "bootstrap-v4-rtl": "^4.5.2-1",
@@ -24,6 +25,7 @@
         "sanjab-ticket": "0.0.6",
         "sass": "^1.20.1",
         "sass-loader": "^8.0.0",
+        "shabnam-font": "^5.0.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
     }

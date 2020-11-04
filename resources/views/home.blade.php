@@ -9,6 +9,13 @@
 
                 <div class="card-body">
                     {{ __('You are logged in!') }}
+                    <ul class="list-group mt-4">
+                        @foreach ($buisnesses as $buisness)
+                            <li class="list-group-item">
+                                <a href="{{ $buisness->link }}">{{ $buisness->name }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>

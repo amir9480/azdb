@@ -146,6 +146,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'category_id' => 'Category',
+        'priority_id' => 'Priority',
+    ],
 
 ];

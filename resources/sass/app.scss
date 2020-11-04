@@ -6,5 +6,10 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-@import '~bootstrap-v4-rtl/dist/css/bootstrap-rtl';
+@import '~bootstrap-v4-rtl/scss/bootstrap-rtl.scss';
+@import '~@fortawesome/fontawesome-free/css/all.css';
+@import '~shabnam-font/dist/font-face.css';
 
+.rtl {
+    font-family: 'Shabnam', sans-serif;
+}

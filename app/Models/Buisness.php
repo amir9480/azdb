@@ -29,6 +29,34 @@ class Buisness extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
+    /**
+     * Buisness URL
+     *
+     * @return string
+     */
+    public function getLinkAttribute()
+    {
+        return route('tickets.index', ['buisness' => $this->id]);
+    }
+
+    /**
+     * Buisness Short URL
+     *
+     * @return string
+     */
+    public function getShortLinkAttribute()
+    {
+        return route('buisness', ['buisness' => $this->id]);
+    }
+
     protected static function boot()
     {
         parent::boot();

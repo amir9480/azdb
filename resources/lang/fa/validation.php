@@ -175,5 +175,7 @@ return [
         'size'                  => 'اندازه',
         'terms'                 => 'شرایط',
         'province'              => 'استان',
+        'category_id'           => 'موضوع',
+        'priority_id'           => 'الویت',
     ],
 ];
