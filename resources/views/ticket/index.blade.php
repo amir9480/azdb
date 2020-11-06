@@ -21,9 +21,9 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Subject</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
+                                        <th>{{ __('Subject') }}</th>
+                                        <th>{{ __('Status') }}</th>
+                                        <th>{{ __('Actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>

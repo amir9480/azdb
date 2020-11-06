@@ -175,7 +175,9 @@ return [
         'size'                  => 'اندازه',
         'terms'                 => 'شرایط',
         'province'              => 'استان',
-        'category_id'           => 'موضوع',
+        'subject'               => 'موضوع',
+        'category_id'           => 'دسته بندی',
         'priority_id'           => 'الویت',
+        'file'                  => 'فایل',
     ],
 ];
