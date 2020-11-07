@@ -9,8 +9,11 @@
                     {{ $ticket->subject }}
                 </div>
 
-                <div class="card-body">
-
+                <div id="app" class="card-body">
+                    <ticket-view
+                        end-point="{{ route('tickets.show', ['buisness' => $buisness, 'ticket' => $ticket]) }}"
+                        :ticket='@json(\App\Http\Resources\TicketResource::make($ticket))'
+                    ></ticket-view>
                 </div>
             </div>
         </div>
