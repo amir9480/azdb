@@ -18,8 +18,8 @@
                 </div>
             </div>
 
-            <form @submit.prevent="send" class="msg-area">
-                <textarea v-model="newMessage" id="new_message_input" maxlength="1000" placeholder="پیام شما ..."></textarea>
+            <form @submit.prevent="send">
+                <textarea v-model="newMessage" id="new_message_input" class="form-control" maxlength="1000" placeholder="پیام شما ..."></textarea>
                 <div class="char-status">
                     <span class="count">{{ newMessage ? newMessage.length : 0 }}</span>
                     <span>/</span>
@@ -27,10 +27,10 @@
                     <span>کاراکتر مجاز</span>
                 </div>
 
-                <button :disabled="loading" type="submit" class="blue-btn float-left mb-4">ارسال</button>
+                <button :disabled="loading" type="submit" class="btn btn-primary float-left mb-4">{{ __('Send') }}</button>
             </form>
 
-            <button @click="closeTicket" :disabled="loading" type="button" class="close-ticket-button float-left mb-4">بستن تیکت</button>
+            <button @click="closeTicket" :disabled="loading" type="button" class="btn btn-danger float-left mb-4">بستن تیکت</button>
 
         </div>
     </div>
