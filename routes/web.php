@@ -25,3 +25,4 @@ Route::get('/tickets/{buisness}', [TicketController::class, 'index'])->name('tic
 Route::get('/tickets/{buisness}/create', [TicketController::class, 'create'])->name('tickets.create');
 Route::post('/tickets/{buisness}', [TicketController::class, 'store'])->name('tickets.store');
 Route::get('/tickets/{buisness}/{ticket}', [TicketController::class, 'show'])->name('tickets.show');
+Route::put('/tickets/{buisness}/{ticket}', [TicketController::class, 'update'])->name('tickets.update');

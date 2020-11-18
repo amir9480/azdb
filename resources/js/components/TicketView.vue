@@ -1,38 +1,37 @@
 <template>
-    <div>
-        <div class="ticket-view">
-            <div class="msg-list">
-                <div v-for="(message, index) in messages" :key="index" class="msg-item" :class="{admin: message.user_id != ticket.user_id}">
-                    <div class="msg-info">
-                        <i class="far fa-user-headset icon"></i>
-                        <span>{{ message.created_at_diff }}</span>
-                    </div>
-                    <div class="msg-content">
-                        <span v-if="message.user.id != ticket.user.id" class="name">پاسخ پشتیبانی</span>
-                        <span v-else class="name">پیام شما</span>
-                        <div class="msg-text">
-                            <p>{{ message.text }}</p>
+    <div class="container">
+        <div>
+            <div v-for="(message, index) in messages" :key="index" class="row">
+                <div
+                    class="col-10 my-2 py-2"
+                    :class="{
+                        'float-left bg-chat-1 offset-2 rounded-right': message.user.id != ticket.user.id,
+                        'bg-chat-2 rounded-left': message.user.id == ticket.user.id}"
+                    >
+                    <div>
+                        <div class="row justify-content-between">
+                            <span class="col-auto mr-auto" v-if="message.user.id != ticket.user.id">پاسخ پشتیبانی</span>
+                            <span class="col-auto mr-auto" v-else>پیام شما</span>
+                            <small class="col-auto">{{ message.created_at_diff }}</small>
+                        </div>
+                        <div>
+                            <p class="white-space-pre">{{ message.text }}</p>
                             <a v-if="message.file" :href="message.file" class="blue-btn">فایل پیوست</a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <form @submit.prevent="send">
-                <textarea v-model="newMessage" id="new_message_input" class="form-control" maxlength="1000" placeholder="پیام شما ..."></textarea>
-                <div class="char-status">
-                    <span class="count">{{ newMessage ? newMessage.length : 0 }}</span>
-                    <span>/</span>
-                    <span class="max">1000</span>
-                    <span>کاراکتر مجاز</span>
-                </div>
-
-                <button :disabled="loading" type="submit" class="btn btn-primary float-left mb-4">{{ __('Send') }}</button>
-            </form>
-
-            <button @click="closeTicket" :disabled="loading" type="button" class="btn btn-danger float-left mb-4">بستن تیکت</button>
-
         </div>
+
+        <form id="chat_input_form" @submit.prevent="send" @keyup.enter.ctrl="send">
+            <div class="form-group">
+                <textarea v-model="newMessage" id="new_message_input" class="form-control" maxlength="1000" placeholder="پیام شما ..."></textarea>
+            </div>
+            <div class="btn-group">
+                <button :disabled="loading" type="submit" class="btn btn-primary float-left mb-4">{{ __('Send') }}</button>
+                <button @click="closeTicket" :disabled="loading" type="button" class="btn btn-danger float-left mb-4">بستن تیکت</button>
+            </div>
+        </form>
     </div>
 </template>
 
@@ -51,6 +50,10 @@
                 type: Array,
                 default: () => []
             },
+            user: {
+                type: Object,
+                default: () => {return {};}
+            }
         },
         data() {
             return {
@@ -59,7 +62,7 @@
                 newMessage: "",
                 eventSource: null,
                 ajaxTimeoutHandler: null,
-                broadcastChannel: new BroadcastChannel('fanora_' + btoa(window.location.host)),
+                broadcastChannel: new BroadcastChannel('sanjab_ticket_sample_' + btoa(window.location.host)),
                 browserTabId: sessionStorage.browserTabId ? sessionStorage.browserTabId : sessionStorage.browserTabId = ('tab_id_' + Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString()),
                 activeBrowserTabId: null,
             }
@@ -151,7 +154,7 @@
                     let playNotification = false;
                     for (let i in newMessages) {
                         this.messages.push(newMessages[i]);
-                        if (newMessages[i].user.id != this.ticket.user.id) {
+                        if (newMessages[i].user.id != this.user.id) {
                             playNotification = true;
                         }
                     }
@@ -160,9 +163,7 @@
                         playNotificationSound();
                     }
                     var self = this;
-                    setTimeout(function () {
-                        self.scrollToBottom();
-                    }, 100);
+                    setTimeout(() => self.scrollToBottom(), 100);
                 }
             },
             send() {
@@ -199,7 +200,7 @@
             },
             scrollToBottom() {
                 $("html,body").animate({
-                    scrollTop: $('#new_message_input').offset().top - (window.innerHeight - ($(".msg-area").height() + $(".msg-area button").height() + 50))
+                    scrollTop: $('#chat_input_form').offset().top
                 });
             },
             setActiveBrowserTabId() {

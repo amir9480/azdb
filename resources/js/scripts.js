@@ -7,3 +7,11 @@ window.trans = function (key) {
     }
     return key;
 }
+
+window.playNotificationSound = function () {
+    if (window.ticketLastTimeNotificationSound === undefined || window.ticketLastTimeNotificationSound + 2 < parseInt(Date.now() / 1000)) {
+        window.ticketLastTimeNotificationSound = parseInt(Date.now() / 1000);
+        let audio = new Audio('/sounds/notification.mp3');
+        audio.play();
+    }
+};
