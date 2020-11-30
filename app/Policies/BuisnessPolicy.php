@@ -19,6 +19,6 @@ class BuisnessPolicy
      */
     public function view(User $user, Buisness $buisness)
     {
-        return $buisness->user_id == $user->id || $buisness->users->where('id', $user->id)->exists();
+        return $buisness->user_id == $user->id || $buisness->users->where('id', $user->id)->count() > 0;
     }
 }

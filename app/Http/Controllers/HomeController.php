@@ -28,6 +28,10 @@ class HomeController extends Controller
         $buisnesses = Buisness::whereHas('tickets', function ($query) {
             $query->where('tickets.user_id', Auth::id());
         })->get();
+        $yourBuisnesses = Buisness::where('user_id', Auth::id())->orWhereHas('users', function ($query) {
+            $query->where('buisness_user.user_id', Auth::id());
+        })->get();
+
         return view('home', get_defined_vars());
     }
 }

@@ -35,6 +35,9 @@
                                 <li class="nav-item active">
                                     <a class="nav-link" href="{{ route('buisnesses.show', ['buisness' => Auth::user()->buisness]) }}">{{ __('Buisness Panel') }}</a>
                                 </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{{ route('buisnesses.staff', ['buisness' => Auth::user()->buisness]) }}">{{ __('Manage staff') }}</a>
+                                </li>
                             @else
                                 <li class="nav-item active">
                                     <a class="nav-link" href="{{ route('buisnesses.create') }}">{{ __('Request Panel') }}</a>
