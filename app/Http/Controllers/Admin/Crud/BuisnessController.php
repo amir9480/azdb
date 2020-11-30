@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Crud;
 
+use App\Models\Buisness;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Sanjab\Controllers\CrudController;
 use Sanjab\Helpers\CrudProperties;
@@ -21,7 +23,10 @@ class BuisnessController extends CrudController
                 ->title(__('Buisness'))
                 ->titles(__('Buisnesses'))
                 ->icon(MaterialIcons::BUSINESS)
-                ->creatable(false);
+                ->creatable(false)
+                ->badge(function () {
+                    return Buisness::where('approved', 0)->count();
+                });
     }
 
     protected function init(string $type, Model $item = null): void
@@ -39,5 +44,10 @@ class BuisnessController extends CrudController
 
         $this->widgets[] = TextAreaWidget::create('description', __('Description'))
                             ->nullable();
+    }
+
+    protected function queryScope(Builder $query)
+    {
+        $query->withoutGlobalScope('approved');
     }
 }

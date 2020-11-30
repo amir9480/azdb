@@ -50,6 +50,16 @@ class User extends Authenticatable
         return $this->hasOne(Buisness::class)->withoutGlobalScope('approved');
     }
 
+    /**
+     * Buisnesses that user assigned as support staff.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function buisnesses()
+    {
+        return $this->belongsToMany(Buisness::class);
+    }
+
     public function getNameAttribute()
     {
         return $this->first_name.' '.$this->last_name;

@@ -5,18 +5,18 @@
                 <div
                     class="col-10 my-2 py-2"
                     :class="{
-                        'float-left bg-chat-1 offset-2 rounded-right': message.user.id != ticket.user.id,
-                        'bg-chat-2 rounded-left': message.user.id == ticket.user.id}"
+                        'float-left bg-chat-1 offset-2 rounded-right': (support === false && message.user.id != ticket.user.id) || (support === true && message.user.id == ticket.user.id),
+                        'bg-chat-2 rounded-left': (support === false && message.user.id == ticket.user.id) || (support === true && message.user.id != ticket.user.id)}"
                     >
                     <div>
                         <div class="row justify-content-between">
-                            <span class="col-auto mr-auto" v-if="message.user.id != ticket.user.id">پاسخ پشتیبانی</span>
-                            <span class="col-auto mr-auto" v-else>پیام شما</span>
+                            <span class="col-auto mr-auto" v-if="message.user.id != ticket.user.id">{{ __('Support') }}</span>
+                            <span class="col-auto mr-auto" v-else>{{ support ? __('Customer') : __('Support') }}</span>
                             <small class="col-auto">{{ message.created_at_diff }}</small>
                         </div>
                         <div>
                             <p class="white-space-pre">{{ message.text }}</p>
-                            <a v-if="message.file" :href="message.file" class="blue-btn">فایل پیوست</a>
+                            <a v-if="message.file" :href="message.file" class="blue-btn">{{ __('File') }}</a>
                         </div>
                     </div>
                 </div>
@@ -25,11 +25,11 @@
 
         <form id="chat_input_form" @submit.prevent="send" @keyup.enter.ctrl="send">
             <div class="form-group">
-                <textarea v-model="newMessage" id="new_message_input" class="form-control" maxlength="1000" placeholder="پیام شما ..."></textarea>
+                <textarea v-model="newMessage" id="new_message_input" class="form-control" maxlength="1000" :placeholder="__('Your Message') + '...'"></textarea>
             </div>
             <div class="btn-group">
                 <button :disabled="loading" type="submit" class="btn btn-primary float-left mb-4">{{ __('Send') }}</button>
-                <button @click="closeTicket" :disabled="loading" type="button" class="btn btn-danger float-left mb-4">بستن تیکت</button>
+                <button v-if="support == false" @click="closeTicket" :disabled="loading" type="button" class="btn btn-danger float-left mb-4">{{ __('Close Ticket') }}</button>
             </div>
         </form>
     </div>
@@ -53,6 +53,10 @@
             user: {
                 type: Object,
                 default: () => {return {};}
+            },
+            support: {
+                type: Boolean,
+                default: false
             }
         },
         data() {
@@ -177,22 +181,33 @@
                 }).catch(function (error) {
                     self.loading = false;
                     console.error(error);
-                    showErrorMessages(error);
+                    httpError(error.response.status);
                 });
             },
             closeTicket() {
-                alert("TODO");
+                var self = this;
+                self.loading = true;
+                axios.delete(this.endPoint)
+                .then(function (response) {
+                    self.loading = false;
+                    self.newMessage = "";
+                    alert(self.__("Closed successfully."));
+                }).catch(function (error) {
+                    self.loading = false;
+                    console.error(error);
+                    httpError(error.response.status);
+                });
             },
             changeTypeHandler() {
                 return setTimeout(() => this.changeType(), 1000);
             },
             changeType() {
-                if (this.eventSource && this.browserTabId != this.activeBrowserTabId) {
+                if (this.eventSource && appBrowserTabId != appActiveBrowserTabId) {
                     this.eventSource.close();
                     this.eventSource = null;
                     this.loadMessages();
                 }
-                if (this.ajaxTimeoutHandler && this.browserTabId == this.activeBrowserTabId) {
+                if (this.ajaxTimeoutHandler && appBrowserTabId == appActiveBrowserTabId) {
                     clearTimeout(this.ajaxTimeoutHandler);
                     this.ajaxTimeoutHandler = null;
                     this.loadMessages();
