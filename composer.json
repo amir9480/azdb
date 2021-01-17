@@ -16,7 +16,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
         "livewire/livewire": "^2.0",
-        "sanjabteam/sanjab": "dev-master",
+        "sanjabteam/sanjab": "v0.3.5",
         "sanjabteam/ticket": "dev-master"
     },
     "require-dev": {

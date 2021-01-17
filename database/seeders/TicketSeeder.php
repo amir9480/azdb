@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Buisness;
 use App\Models\Ticket;
 use App\Models\TicketCategory;
 use Illuminate\Database\Seeder;
@@ -27,6 +28,7 @@ class TicketSeeder extends Seeder
         TicketCategory::create(['name' => 'انتقاد', 'color' => '#ff9800']);
         TicketCategory::create(['name' => 'شکایت', 'color' => '#ff0000']);
 
-        Ticket::factory(50)->create();
+        $buisness = Buisness::factory()->create();
+        Ticket::factory(50)->create(['buisness_id' => $buisness->id]);
     }
 }

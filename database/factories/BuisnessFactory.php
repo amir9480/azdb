@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Buisness;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BuisnessFactory extends Factory
@@ -25,6 +26,7 @@ class BuisnessFactory extends Factory
             'approved'    => true,
             'name'        => $this->faker->word,
             'description' => $this->faker->text,
+            'user_id'     => User::inRandomOrder()->first()->id
         ];
     }
 }
