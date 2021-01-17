@@ -23,6 +23,8 @@
                                         <th>#</th>
                                         <th>{{ __('Subject') }}</th>
                                         <th>{{ __('Status') }}</th>
+                                        <th>{{ __('Category') }}</th>
+                                        <th>{{ __('Priority') }}</th>
                                         <th>{{ __('Actions') }}</th>
                                     </tr>
                                 </thead>
@@ -31,9 +33,9 @@
                                         <tr>
                                             <td>{{ $ticket->id }}</td>
                                             <td>{{ $ticket->subject }}</td>
-                                            <td>
-                                                {{ $ticket->status_localed }}
-                                            </td>
+                                            <td>{{ $ticket->status_localed }}</td>
+                                            <td style="color: {{ $ticket->category->color }}">{{ $ticket->category->name }}</td>
+                                            <td style="color: {{ $ticket->priority->color }}">{{ $ticket->priority->name }}</td>
                                             <td>
                                                 <div class="btn-group" role="group">
                                                     <a href="{{ route('tickets.show', ['buisness' => $buisness, 'ticket' => $ticket]) }}" class="btn btn-primary">

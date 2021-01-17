@@ -8,6 +8,9 @@
                 <div class="card-header">{{ __('Tickets') }}</div>
 
                 <div class="card-body">
+                    <div class="alert alert-success text-center">
+                        <span>{{ route('buisness', ['buisness' => $buisness]) }}</span>
+                    </div>
                     @if ($tickets->count() > 0)
                         <div class="table-responsive">
                             <table class="table table-hover">
@@ -16,6 +19,8 @@
                                         <th>#</th>
                                         <th>{{ __('Subject') }}</th>
                                         <th>{{ __('Status') }}</th>
+                                        <th>{{ __('Category') }}</th>
+                                        <th>{{ __('Priority') }}</th>
                                         <th>{{ __('Actions') }}</th>
                                     </tr>
                                 </thead>
@@ -24,9 +29,9 @@
                                         <tr>
                                             <td>{{ $ticket->id }}</td>
                                             <td>{{ $ticket->subject }}</td>
-                                            <td>
-                                                {{ $ticket->status_localed }}
-                                            </td>
+                                            <td>{{ $ticket->status_localed }}</td>
+                                            <td style="color: {{ $ticket->category->color }}">{{ $ticket->category->name }}</td>
+                                            <td style="color: {{ $ticket->priority->color }}">{{ $ticket->priority->name }}</td>
                                             <td>
                                                 <div class="btn-group" role="group">
                                                     <a href="{{ route('buisnesses.ticket-show', ['buisness' => $buisness, 'ticket' => $ticket]) }}" class="btn btn-primary">

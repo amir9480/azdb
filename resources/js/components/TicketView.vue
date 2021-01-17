@@ -10,7 +10,8 @@
                     >
                     <div>
                         <div class="row justify-content-between">
-                            <span class="col-auto mr-auto" v-if="message.user.id != ticket.user.id">{{ __('Support') }}</span>
+                            <span class="col-auto mr-auto" v-if="support == false && message.user.id == ticket.user.id">{{ __('You') }}</span>
+                            <span class="col-auto mr-auto" v-else-if="message.user.id != ticket.user.id">{{ __('Support') }}</span>
                             <span class="col-auto mr-auto" v-else>{{ support ? __('Customer') : __('Support') }}</span>
                             <small class="col-auto">{{ message.created_at_diff }}</small>
                         </div>
