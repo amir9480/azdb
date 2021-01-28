@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ee078f406d1365254f0bd375bad16dff",
+    "content-hash": "f9b49ccee8ae621a533403557e2ff8c1",
     "packages": [
         {
             "name": "ankitpokhrel/tus-php",
@@ -3398,16 +3398,16 @@
         },
         {
             "name": "sanjabteam/sanjab",
-            "version": "v0.3.5",
+            "version": "v0.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sanjabteam/sanjab.git",
-                "reference": "f670f9507d54da911641180c01009d01f30df184"
+                "reference": "a7e4369d9ba8982f9c4efa2409500ed67f2ba73f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sanjabteam/sanjab/zipball/f670f9507d54da911641180c01009d01f30df184",
-                "reference": "f670f9507d54da911641180c01009d01f30df184",
+                "url": "https://api.github.com/repos/sanjabteam/sanjab/zipball/a7e4369d9ba8982f9c4efa2409500ed67f2ba73f",
+                "reference": "a7e4369d9ba8982f9c4efa2409500ed67f2ba73f",
                 "shasum": ""
             },
             "require": {
@@ -3471,9 +3471,9 @@
             ],
             "support": {
                 "issues": "https://github.com/sanjabteam/sanjab/issues",
-                "source": "https://github.com/sanjabteam/sanjab/tree/v0.3.5"
+                "source": "https://github.com/sanjabteam/sanjab/tree/v0.3.6"
             },
-            "time": "2020-12-28T18:12:25+00:00"
+            "time": "2021-01-02T09:28:14+00:00"
         },
         {
             "name": "sanjabteam/ticket",
