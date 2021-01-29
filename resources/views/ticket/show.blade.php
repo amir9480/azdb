@@ -12,7 +12,7 @@
                 <div id="app" class="card-body">
                     <ticket-view
                         end-point="{{ route('tickets.show', ['buisness' => $buisness, 'ticket' => $ticket]) }}"
-                        :user=@json(Auth::user())
+                        :user='@json(Auth::user())'
                         :ticket='@json(\App\Http\Resources\TicketResource::make($ticket))'
                     ></ticket-view>
                 </div>
